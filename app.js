@@ -40,7 +40,6 @@ app.get('/redirect', (req, res)=>{
 })
 
 // Get elements from URL
-
 app.get('/users/:id', (req, res)=>{
     console.log(req.params.id)
     console.log(req.query.sort)
