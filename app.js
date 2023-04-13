@@ -3,6 +3,9 @@ require('dotenv').config()
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 8000
+const path = require('path')
+
+app.set('view engine', 'pug')
 
 // STAGE 1
 // app.get('/', (req, res)=> res.send('GET: Reading something!'));
@@ -43,5 +46,10 @@ app.get('/users/:id', (req, res)=>{
     console.log(req.query.sort)
     res.send("Check your console")
 })
+
+// RENDERING VIEWS WITH PUG
+app.get('/pug/:name', (req, res) => {
+    res.render('index', { title: 'Hey', message: `Hello there ${req.params.name}!` })
+  })
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT}/`))
